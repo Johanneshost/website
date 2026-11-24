@@ -115,3 +115,9 @@ figcaption { margin-top:10px; font-size:14px; color:var(--grey); line-height:1.4
 .contact.in .contact-car { transform:translateX(0); }
 @media (max-width:720px) { .contact-car { width:160px; top:auto; bottom:100px; right:16px; } }
 @media (prefers-reduced-motion: reduce) { .contact-car { transition:none; } }
+
+/* Hero: Auto fährt auf der Kante zum hellen Bereich */
+nav { padding-top:clamp(24px,3vw,40px); padding-bottom:clamp(20px,2.4vw,32px); }
+.hero { min-height:calc(100vh - 100px); padding-bottom:0; }
+#hero-car { margin-top:auto !important; padding-top:clamp(24px,4vw,56px); margin-bottom:-2px; }
+@media (max-width:720px) { .hero { min-height:auto; } }
