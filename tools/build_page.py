@@ -42,7 +42,7 @@ def build(p):
 <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-  <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li></ul></nav>
+  <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#about">About</a></li><li><a href="../../#newsletter">Newsletter</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>
   <header class="p-hero">
     <p class="label accent">{E(p["label"])}</p>
     <h1>{E(p["title"])}</h1>
