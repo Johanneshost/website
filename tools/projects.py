@@ -56,7 +56,7 @@ build(dict(slug='nilu-27', title='Nilu 27 & Sketch Gallery', sub='Full-scale tap
   desc='Nilu 27: a full-scale automotive tape rendering of a sports car side view, plus a gallery of car sketches in marker, pencil and digital by Leonard Philp.',
   label='06 / Automotive design techniques', tagline='"nilu 27", a sports car side view as full-scale tape rendering, built layer by layer on stretched paper: every surface, shadow and highlight is laid by hand with tape in different widths and tones, then refined line by line to capture the light and form of the car.',
   cover=('bilder/00-hero-nilu27-tape-rendering.jpg','Full-scale tape rendering of the sports car Nilu 27'),
-  meta=[('Technique','Full-scale tape rendering'),('Team','Team of three, with Alp Ömer Özbek & Carl Schüring'),('Course','Rendering seminar, Prof. Gerhard Friedrich, Summer 2025'),('Duration','1 week')],
+  meta=[('Where','HTW Berlin'),('Technique','Full-scale tape rendering'),('Team','Team of three, with Alp Ömer Özbek & Carl Schüring'),('Course','Rendering seminar, Prof. Gerhard Friedrich, Summer 2025'),('Duration','1 week')],
   sections=[
    dict(title='Side view', images=[(U+'06-nilu-27/06-nilu27-side-view-cutout.png','','Cut-out side view of the Nilu 27 tape rendering on black')]),
    dict(title='Sketch gallery', text=['Car sketches from recent years, drawn digitally and by hand: studies of proportion, stance, surfaces and light signatures. Media: digital, marker, pencil (Photoshop, Procreate).']),

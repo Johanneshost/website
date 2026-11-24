@@ -268,3 +268,10 @@ figure.vid.tile.playing .vplay { opacity:0; pointer-events:none; }
 .uni-logo.sfsu { height:64px; }
 .gallery.sketches figcaption { display:none; }
 .vlb video { width:min(100%, calc((100vh - 140px) * 16 / 9)); max-height:calc(100vh - 140px); background:#000; display:block; }
+.meta-uni { display:flex; align-items:center; gap:14px; justify-self:end; align-self:center; }
+.meta-uni img { height:34px; width:auto; display:block; }
+.meta-uni.sfsu img { height:52px; }
+.meta-uni span { font-size:12.5px; line-height:1.3; color:#444; }
+@media (max-width:720px) { .meta-uni { justify-self:start; } }
+.meta-uni span { white-space:nowrap; }
+.meta-uni.sfsu img { height:46px; }

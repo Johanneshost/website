@@ -37,7 +37,7 @@ def build(p):
     meta=''.join(f'<div><dt>{E(k)}</dt><dd>{E(v)}</dd></div>' for k,v in p['meta'])
     secs=''
     where=' '.join(v for k,v in p['meta'] if k=='Where')
-    uni='<img class="uni-logo" src="../../bilder/about/logo-htw.png?v=2" alt="HTW Berlin" loading="lazy">' if 'HTW' in where else ('<img class="uni-logo sfsu" src="../../bilder/about/logo-sfsu.png?v=2" alt="San Francisco State University" loading="lazy">' if 'San Francisco' in where else '')
+    uni='<div class="meta-uni"><img src="../../bilder/about/logo-htw-black.png?v=1" alt="" loading="lazy"><span>Hochschule für Technik<br>und Wirtschaft Berlin</span></div>' if 'HTW' in where else ('<div class="meta-uni sfsu"><img src="../../bilder/about/logo-sfsu-full.jpg?v=1" alt="San Francisco State University" loading="lazy"></div>' if 'San Francisco' in where else '')
     for sec in p['sections']:
         txt=''.join(f'<p>{E(t)}</p>' for t in sec.get('text',[]))
         gal=''
@@ -48,8 +48,6 @@ def build(p):
             else:
                 gal=f'<div class="{cls}">'+''.join(fig(s,*i) for i in sec['images'])+'</div>'
         head=f'<h2>{E(sec["title"])}</h2>'
-        if uni:
-            head=f'<div class="t-head"><h2>{E(sec["title"])}</h2>{uni}</div>'; uni=''
         secs+=f'<section class="block"><div class="text">{head}<div>{txt}</div></div>{gal}</section>\n'
     nx=p['next']
     page=f'''<!doctype html>
@@ -59,7 +57,7 @@ def build(p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(p["title"])} · {E(p["sub"])} · Leonard Philp</title>
 <meta name="description" content="{E(p["desc"])}">
-<link rel="stylesheet" href="../../style.css?v=26">
+<link rel="stylesheet" href="../../style.css?v=28">
 </head>
 <body>
   <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#about">About</a></li><li><a href="../../#newsletter">Newsletter</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>
@@ -70,12 +68,12 @@ def build(p):
   </header>
   <img class="full" src="{img(s,p["cover"][0])}" alt="{E(p["cover"][1])}">
   <main class="p-body">
-    <dl class="meta">{meta}</dl>
+    <dl class="meta">{meta}{uni}</dl>
 {secs}  </main>
   <footer class="next">
     <a class="next-link" href="{nx[2]}"><div class="next-img"><img src="{next_img(nx)}" alt="" loading="lazy"></div><div class="next-meta"><span class="label accent">Next project</span><span class="label">{nx[0]}</span><h2>{E(nx[1])}</h2><span class="label go">View project →</span></div></a>
   </footer>
-  <script src="../../lightbox.js?v=4" defer></script>
+  <script src="../../lightbox.js?v=5" defer></script>
 </body>
 </html>
 '''
