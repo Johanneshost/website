@@ -55,4 +55,5 @@ figcaption { margin-top:10px; font-size:14px; color:var(--grey); line-height:1.4
 .next { display:flex; justify-content:space-between; align-items:end; gap:24px; padding:clamp(48px,7vw,96px) var(--pad); background:#000; border-top:1px solid #222; }
 .next a:hover h2 { color:var(--accent); }
 @media (max-width:720px) { .text { grid-template-columns:1fr; } nav ul { gap:16px; } }
-.gallery.two { grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.gallery.two { grid-template-columns:repeat(2, minmax(0,1fr)); }
+@media (max-width:720px) { .gallery.two { grid-template-columns:1fr; } }
