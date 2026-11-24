@@ -60,8 +60,8 @@ build(dict(slug='nilu-27', title='Nilu 27 & Sketch Gallery', sub='Full-scale tap
   sections=[
    dict(title='Side view', images=[(U+'06-nilu-27/06-nilu27-side-view-cutout.png','','Cut-out side view of the Nilu 27 tape rendering on black')]),
    dict(title='Sketch gallery', text=['Car sketches from recent years, drawn digitally and by hand: studies of proportion, stance, surfaces and light signatures. Media: digital, marker, pencil (Photoshop, Procreate).']),
-   dict(title='Marker & pencil sketches', images=skimg(sk[:9])),
-   dict(title='Digital sketches', images=skimg(sk[9:])),
+   dict(title='Marker & pencil sketches', layout='sketches', images=skimg(sk[:9])),
+   dict(title='Digital sketches', layout='sketches', images=skimg(sk[9:])),
   ], next=('07','Yellow Superpress','../yellow-superpress/')))
 build(dict(slug='yellow-superpress', title='Yellow Superpress', sub='Lemon press for bars',
   desc='Yellow Superpress by Leonard Philp (HTW Berlin): a mechanical citrus press for professional bars that presses sideways, one-handed and without electricity.',
@@ -73,28 +73,28 @@ build(dict(slug='yellow-superpress', title='Yellow Superpress', sub='Lemon press
    dict(title='Ideation', images=[(W+'07-superpress-sketch-1.jpg','Early concepts','Early concept sketches of the lemon press'),(W+'07-superpress-sketch-2.jpg','Form exploration','Form exploration sketches')]),
    dict(title='CAD & rendering', images=[(W+'07-superpress-cad-variants.jpg','Variants in Rhino','Three CAD variants in Rhino'),(W+'07-superpress-render-detail.jpg','Curved tray with drainage holes','Render detail of the curved tray with drainage holes'),(W+'07-superpress-render-bar.jpg','In context on the bar counter','Rendering of the press on a bar counter')]),
    dict(title='Model', images=[(U+'07-superpress/07-superpress-model-cocktail-glass.jpg','Model with cocktail glass','Model of the press with a cocktail glass'),(U+'07-superpress/07-superpress-model-bar-counter.jpg','At the bar counter','Model on a bar counter'),(U+'07-superpress/07-superpress-model-kitchen.jpg','Kitchen','Model in a kitchen')]),
-  ], next=('08','Perfect Connections','../perfect-connections/')))
-build(dict(slug='perfect-connections', title='Perfect Connections', sub='Organic joint for beech rods',
-  desc='Perfect Connections by Leonard Philp (HTW Berlin): a Grasshopper-generated, 3D-printed organic connector for beech dowels in versions for two and three rods.',
-  label='08 / Form & process', tagline='A connector for beech dowels, generated in Grasshopper to wrap the dowels with only the material it needs. The result is an organic, grown-looking lattice, in versions for two and three dowels.',
-  cover=(W+'08-connections-cover.jpg','3D-printed organic lattice joint connecting beech dowels'),
-  meta=[('Where','HTW Berlin, Design Basics 3'),('Dowels','Beech, Ø 20 mm'),('Methods','Sketching · Grasshopper · 3D printing · Model making')],
-  sections=[
-   dict(title='Approach', images=[(W+'08-connections-sketches.jpg','Construction ideas, pencil','Pencil sketches of construction ideas'),(W+'08-connections-marker-sketch.jpg','Joint concepts, marker','Marker sketches of joint concepts'),(W+'08-connections-early-model.jpg','Early functional model','Early functional model of the joint')]),
-   dict(title='Result', images=[(W+'08-connections-two-variants.jpg','Two-rod and three-rod variants','Two-rod and three-rod connector variants'),(W+'08-connections-detail-2-rods.jpg','Two-rod joint','Two-rod joint'),(W+'08-connections-detail-3-rods.jpg','Three-rod joint','Three-rod joint'),(W+'08-connections-detail-close.jpg','Organic lattice, close-up','Close-up of the organic lattice')]),
-  ], next=('09','Masseo','../masseo/')))
+  ], next=('08','Masseo','../masseo/')))
 M=U+'09-masseo/09-masseo-'
 build(dict(slug='masseo', title='Masseo', sub='Bruxism add-on for in-ears',
   desc='Masseo by Leonard Philp: an add-on for wireless in-ears that turns a bruxism guard into a lifestyle product, designed at HTW Berlin with the Charité dental clinic.',
-  label='09 / Design Project 2 · Charité', tagline='An add-on for wireless in-ears that turns a bruxism guard into a lifestyle product.',
+  label='08 / Design Project 2 · Charité', tagline='An add-on for wireless in-ears that turns a bruxism guard into a lifestyle product.',
   cover=(M+'cover-pad-docked.jpg','Masseo cheek pad docked to a wireless in-ear'),
   meta=[('Where','HTW Berlin, with Charité dental clinic'),('Supervision','Prof. Pelin Celik'),('Semester','Summer 2026'),('Methods','Research · Sketching · 3D modelling · Rendering')],
   sections=[
    dict(title='Brief', text=['A medical silicone pad on the cheek reads the masseter muscle via EMG and relaxes it with short bursts of heat and vibration. It draws power from the earbud through a flexible cable; at night a magnetic range-extender battery takes over, and an iOS app logs the clenching.']),
    dict(title='Concept', images=[(M+'cover-pad-docked.jpg','Cheek pad docked to the in-ear','Cheek pad docked to the in-ear'),(M+'wearing.jpg','Wearing Masseo','Person wearing Masseo'),(M+'night-mode-battery.jpg','Night mode with battery','Masseo in night mode with range-extender battery'),(M+'exploded-view.jpg','Exploded view: pad, heating foil, board, case','Exploded view of Masseo')]),
    dict(title='Form & fit', images=[(M+'form-studies.jpg','Form studies','Form studies of the cheek pad'),(M+'pad-position.jpg','Pad position on the masseter','Pad position on the masseter muscle')]),
-  ], next=('10','Product Analysis: Detail Sander','../detail-sander/')))
+  ], next=('09','Perfect Connections','../perfect-connections/')))
 S=U+'10-detail-sander/10-sander-'
+build(dict(slug='perfect-connections', title='Perfect Connections', sub='Organic joint for beech rods',
+  desc='Perfect Connections by Leonard Philp (HTW Berlin): a Grasshopper-generated, 3D-printed organic connector for beech dowels in versions for two and three rods.',
+  label='09 / Form & process', tagline='A connector for beech dowels, generated in Grasshopper to wrap the dowels with only the material it needs. The result is an organic, grown-looking lattice, in versions for two and three dowels.',
+  cover=(W+'08-connections-cover.jpg','3D-printed organic lattice joint connecting beech dowels'),
+  meta=[('Where','HTW Berlin, Design Basics 3'),('Dowels','Beech, Ø 20 mm'),('Methods','Sketching · Grasshopper · 3D printing · Model making')],
+  sections=[
+   dict(title='Approach', images=[(W+'08-connections-sketches.jpg','Construction ideas, pencil','Pencil sketches of construction ideas'),(W+'08-connections-marker-sketch.jpg','Joint concepts, marker','Marker sketches of joint concepts'),(W+'08-connections-early-model.jpg','Early functional model','Early functional model of the joint')]),
+   dict(title='Result', images=[(W+'08-connections-two-variants.jpg','Two-rod and three-rod variants','Two-rod and three-rod connector variants'),(W+'08-connections-detail-2-rods.jpg','Two-rod joint','Two-rod joint'),(W+'08-connections-detail-3-rods.jpg','Three-rod joint','Three-rod joint'),(W+'08-connections-detail-close.jpg','Organic lattice, close-up','Close-up of the organic lattice')]),
+  ], next=('10','Product Analysis: Detail Sander','../detail-sander/')))
 build(dict(slug='detail-sander', title='Product Analysis: Detail Sander', sub='Repairability analysis',
   desc='Product analysis of a detail sander by Leonard Philp and Konstantin Weilinger (HTW Berlin): every part analysed for repairability, materials and manufacturing.',
   label='10 / Sustainable Design 2', tagline='Every part of a detail sander, analysed for repairability, materials and manufacturing.',

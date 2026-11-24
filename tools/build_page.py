@@ -21,6 +21,17 @@ def next_img(nx):
     return f'../../bilder/projekte/{nx[0]}-{slug}-cover.jpg?v=3'
 def fig(slug,src,cap,alt):
     return f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"><figcaption>{E(cap)}</figcaption></figure>' if cap else f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"></figure>'
+def justified(slug,images):
+    n=len(images); nrows=max(1,round(n/3.4)); base,extra=divmod(n,nrows)
+    sizes=[base+(1 if r>=nrows-extra else 0) for r in range(nrows)]
+    out='<div class="gallery sketches">'; k=0
+    for sz in sizes:
+        out+='<div class="sk-row">'
+        for src,cap,alt in images[k:k+sz]:
+            url=img(slug,src); w,h=Image.open(os.path.join(ROOT,'bilder',slug,os.path.basename(url))).size; ar=w/h
+            out+=f'<figure style="flex:{ar:.3f} 1 0"><img src="{url}" alt="{E(alt)}" loading="lazy" width="{w}" height="{h}"><figcaption>{E(cap)}</figcaption></figure>'
+        out+='</div>'; k+=sz
+    return out+'</div>'
 def build(p):
     s=p['slug']
     meta=''.join(f'<div><dt>{E(k)}</dt><dd>{E(v)}</dd></div>' for k,v in p['meta'])
@@ -29,8 +40,11 @@ def build(p):
         txt=''.join(f'<p>{E(t)}</p>' for t in sec.get('text',[]))
         gal=''
         if sec.get('images'):
-            cls='gallery two' if len(sec['images'])==4 else ('gallery one' if len(sec['images'])==1 else 'gallery')
-            gal=f'<div class="{cls}">'+''.join(fig(s,*i) for i in sec['images'])+'</div>'
+            cls='gallery sketches' if sec.get('layout')=='sketches' else ('gallery two' if len(sec['images'])==4 else ('gallery one' if len(sec['images'])==1 else 'gallery'))
+            if sec.get('layout')=='sketches':
+                gal=justified(s,sec['images'])
+            else:
+                gal=f'<div class="{cls}">'+''.join(fig(s,*i) for i in sec['images'])+'</div>'
         secs+=f'<section class="block"><div class="text"><h2>{E(sec["title"])}</h2><div>{txt}</div></div>{gal}</section>\n'
     nx=p['next']
     page=f'''<!doctype html>
@@ -40,7 +54,7 @@ def build(p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(p["title"])} · {E(p["sub"])} · Leonard Philp</title>
 <meta name="description" content="{E(p["desc"])}">
-<link rel="stylesheet" href="../../style.css?v=15">
+<link rel="stylesheet" href="../../style.css?v=20">
 </head>
 <body>
   <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#about">About</a></li><li><a href="../../#newsletter">Newsletter</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>
@@ -56,6 +70,7 @@ def build(p):
   <footer class="next">
     <a class="next-link" href="{nx[2]}"><div class="next-img"><img src="{next_img(nx)}" alt="" loading="lazy"></div><div class="next-meta"><span class="label accent">Next project</span><span class="label">{nx[0]}</span><h2>{E(nx[1])}</h2><span class="label go">View project →</span></div></a>
   </footer>
+  <script src="../../lightbox.js?v=1" defer></script>
 </body>
 </html>
 '''

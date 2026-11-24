@@ -212,3 +212,37 @@ nav { padding-top:clamp(24px,3vw,40px); padding-bottom:clamp(20px,2.4vw,32px); }
 .next-meta .go { display:inline-block; margin-top:18px; color:var(--grey); }
 .next-link:hover .next-meta h2 { color:var(--accent); }
 @media (max-width:720px) { .next-link { grid-template-columns:1fr; } }
+
+/* Feinschliff 5: sketch grid + lightbox */
+.gallery.sketches { display:flex; flex-direction:column; gap:clamp(12px,1.6vw,20px); }
+.sk-row { display:flex; gap:clamp(12px,1.6vw,20px); align-items:flex-start; }
+.sk-row figure { margin:0; min-width:0; overflow:hidden; background:#e4e3df; }
+.sk-row img { width:100%; height:auto; display:block; transition:transform .5s ease; }
+.sk-row figure:hover img { transform:scale(1.03); }
+.gallery.sketches figcaption { display:none; }
+@media (max-width:720px) { .sk-row { flex-wrap:wrap; } .sk-row figure { flex:1 1 40% !important; } }
+.p-body figure img, .dark-block figure img { cursor:zoom-in; }
+.lb { position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.94); display:none; align-items:center; justify-content:center; flex-direction:column; padding:56px 72px 24px; }
+.lb.open { display:flex; }
+.lb img { max-width:100%; max-height:calc(100vh - 120px); object-fit:contain; display:block; background:transparent; cursor:default; }
+.lb-cap { color:#bbb; font-size:14px; margin-top:14px; text-align:center; min-height:1.2em; }
+.lb-count { position:absolute; top:22px; left:24px; color:#888; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; }
+.lb button { position:absolute; background:none; border:0; color:#fff; cursor:pointer; font-size:28px; line-height:1; padding:14px; opacity:.75; transition:opacity .2s; font-family:inherit; }
+.lb button:hover { opacity:1; color:var(--accent); }
+.lb-close { top:8px; right:12px; }
+.lb-prev { left:8px; top:50%; transform:translateY(-50%); font-size:40px !important; }
+.lb-next { right:8px; top:50%; transform:translateY(-50%); font-size:40px !important; }
+@media (max-width:720px) { .lb { padding:56px 12px 24px; } .lb-prev, .lb-next { top:auto; bottom:12px; transform:none; } }
+.skills > div:not(.sw-wrap) { padding-left:0; }
+.skills .sw-wrap + .sw-wrap { margin-top:8px; }
+.sw-icons svg { width:30px; height:30px; flex:none; fill:none; stroke:var(--accent); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.sw-icons svg text { fill:var(--accent); stroke:none; font:600 8px 'Inter Tight', sans-serif; letter-spacing:.04em; }
+/* Scorpion card: front wheel breaks out of the frame */
+.img-pop { position:relative; }
+.img-pop .img { background:transparent; }
+.img-pop img { width:100%; height:auto; object-fit:initial; }
+.img-pop .img img { height:auto; }
+.img-pop .pop { position:absolute; left:0; top:0; z-index:2; pointer-events:none; transition:transform .6s ease; }
+.card:hover .img-pop img { transform:none; }
+.img-pop { padding-bottom:6%; }
+.grid:not(.small) .card > .img { margin-bottom:6%; }
