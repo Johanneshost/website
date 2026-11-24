@@ -7,26 +7,134 @@
 <meta name="description" content="Portfolio of Leonard Philp, industrial design student at HTW Berlin: transportation design, product design and automotive tape rendering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700&family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-  :root { --dark:#111111; --light:#F3F2EE; --grey:#8A8A86; --accent:#D9532B; }
+  :root { --dark:#111111; --light:#F3F2EE; --grey:#8A8A86; --accent:#D9532B; --pad:clamp(16px,4vw,48px); }
   * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
   body { background:#000; color:#fff; font-family:Inter, system-ui, sans-serif; }
-  .label { font-family:"JetBrains Mono", monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); }
-  header { padding:24px clamp(16px,4vw,48px); }
-  .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; gap:28px; padding:0 clamp(16px,4vw,48px) 48px; }
+  a { color:inherit; text-decoration:none; }
+  .label { font-family:"JetBrains Mono", monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .accent { color:var(--accent); }
+
+  /* Navigation */
+  nav { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center;
+        padding:20px var(--pad); background:rgba(0,0,0,.85); backdrop-filter:blur(8px); }
+  nav ul { display:flex; gap:24px; list-style:none; }
+  nav a:hover { color:var(--accent); }
+
+  /* Hero */
+  .hero { min-height:calc(100vh - 60px); display:flex; flex-direction:column; justify-content:center; gap:28px; padding:0 var(--pad) 48px; }
   h1 { font-family:"Inter Tight", sans-serif; font-weight:700; letter-spacing:-.03em; line-height:.9; font-size:clamp(56px,13vw,200px); }
   .sub { max-width:560px; color:var(--grey); font-size:clamp(16px,1.6vw,20px); line-height:1.45; }
   .hero img { width:100%; height:auto; display:block; margin-top:24px; }
+
+  /* Work */
+  .work { background:var(--light); color:var(--dark); padding:clamp(64px,10vw,140px) var(--pad); }
+  .work + .work { padding-top:0; }
+  .section-head { display:flex; flex-direction:column; gap:14px; margin-bottom:clamp(32px,5vw,64px); }
+  h2 { font-family:"Inter Tight", sans-serif; font-weight:700; letter-spacing:-.03em; line-height:.95; font-size:clamp(40px,7vw,96px); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap:clamp(24px,3vw,40px) clamp(16px,2vw,28px); }
+  .grid.small { grid-template-columns:repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+  .card { display:flex; flex-direction:column; gap:14px; }
+  .card .img { aspect-ratio:4/3; overflow:hidden; background:#e4e3df; }
+  .card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+  .card:hover img { transform:scale(1.04); }
+  .card h3 { font-family:"Inter Tight", sans-serif; font-weight:600; font-size:clamp(20px,2vw,26px); letter-spacing:-.02em; line-height:1.1; margin-top:4px; }
+  .card p { color:var(--grey); font-size:15px; line-height:1.4; }
 </style>
 </head>
 <body>
-  <header class="label">Leonard Philp</header>
-  <main class="hero">
-    <p class="label">Industrial Design Portfolio</p>
+  <nav class="label">
+    <a href="#">Leonard Philp</a>
+    <ul><li><a href="#work">Work</a></li></ul>
+  </nav>
+
+  <header class="hero">
+    <p class="label accent">Industrial Design Portfolio</p>
     <h1>Leonard Philp</h1>
     <p class="sub">Industrial design student at HTW Berlin. Transportation, product and the space between business and form.</p>
     <img src="bilder/hero.jpg" alt="Full-scale automotive tape rendering of the sports car Nilu 27 by Leonard Philp" width="2200" height="633">
+  </header>
+
+  <main>
+    <section class="work" id="work">
+      <div class="section-head">
+        <p class="label accent">01 / Selected work</p>
+        <h2>Selected work.</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/01-scorpion-cover.jpg" alt="Scorp.ion electric moped in side view with cyan front light ring and red rear light band" loading="lazy"></div>
+          <span class="label accent">01</span>
+          <h3>Scorp.ion</h3>
+          <p>Electric moped powered by the tram line</p>
+        </article>
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/02-steel-vehicle-cover.jpg" alt="Steel gravity racer with blue wheels in front of the Golden Gate Bridge, San Francisco" loading="lazy"></div>
+          <span class="label accent">02</span>
+          <h3>Steel Vehicle</h3>
+          <p>Gravity racer from steel only · SFSU</p>
+        </article>
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/03-tableware-cover.jpg" alt="Safety-yellow lunch trays, bowl and cup for construction workers on a workbench with a hard hat" loading="lazy"></div>
+          <span class="label accent">03</span>
+          <h3>Tableware for Construction Workers</h3>
+          <p>User-centred product design · SFSU</p>
+        </article>
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/04-hybrid-yoga-box-cover.jpg" alt="Cork yoga block with integrated speaker being joined to its companion box" loading="lazy"></div>
+          <span class="label accent">04</span>
+          <h3>Hybrid Yoga Box</h3>
+          <p>Cork, wood &amp; sound · Product design</p>
+        </article>
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/05-brush-d-cover.jpg" alt="BRUSH_D modular dish brush in copper standing in its drying stand next to a kitchen sink" loading="lazy"></div>
+          <span class="label accent">05</span>
+          <h3>BRUSH_D</h3>
+          <p>Modular dish brush · Product design</p>
+        </article>
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/06-nilu-27-cover.jpg" alt="Marker sketch of a BMW 8 Series coupé in side and rear three-quarter view" loading="lazy"></div>
+          <span class="label accent">06</span>
+          <h3>Nilu 27 &amp; Sketch Gallery</h3>
+          <p>Full-scale tape rendering &amp; car sketches</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="work" id="other">
+      <div class="section-head">
+        <p class="label accent">Further explorations</p>
+        <h2>Other projects.</h2>
+      </div>
+      <div class="grid small">
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/07-yellow-superpress-cover.jpg" alt="White model of the Yellow Superpress lemon press with a glass and two lemons" loading="lazy"></div>
+          <span class="label accent">07</span>
+          <h3>Yellow Superpress</h3>
+          <p>Lemon press for bars · Product design</p>
+        </article>
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/08-perfect-connections-cover.jpg" alt="3D-printed organic lattice joint connecting beech wood rods" loading="lazy"></div>
+          <span class="label accent">08</span>
+          <h3>Perfect Connections</h3>
+          <p>Organic joint for beech rods · Computational design</p>
+        </article>
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/09-masseo-cover.jpg" alt="Masseo cheek pad docked to a wireless in-ear on a black head model" loading="lazy"></div>
+          <span class="label accent">09</span>
+          <h3>Masseo</h3>
+          <p>Bruxism add-on for in-ears · Charité</p>
+        </article>
+        <article class="card">
+          <div class="img"><img src="bilder/projekte/10-detail-sander-cover.jpg" alt="Disassembled detail sander parts in a vacuum-formed inlay on a presentation board" loading="lazy"></div>
+          <span class="label accent">10</span>
+          <h3>Product Analysis: Detail Sander</h3>
+          <p>Repairability analysis · Sustainable Design 2</p>
+        </article>
+      </div>
+    </section>
   </main>
 </body>
 </html>
