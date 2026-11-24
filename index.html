@@ -8,41 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<style>
-  :root { --dark:#111111; --light:#F3F2EE; --grey:#8A8A86; --accent:#D9532B; --pad:clamp(16px,4vw,48px); }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  html { scroll-behavior:smooth; }
-  body { background:#000; color:#fff; font-family:Inter, system-ui, sans-serif; }
-  a { color:inherit; text-decoration:none; }
-  .label { font-family:"JetBrains Mono", monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
-  .accent { color:var(--accent); }
-
-  /* Navigation */
-  nav { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center;
-        padding:20px var(--pad); background:rgba(0,0,0,.85); backdrop-filter:blur(8px); }
-  nav ul { display:flex; gap:24px; list-style:none; }
-  nav a:hover { color:var(--accent); }
-
-  /* Hero */
-  .hero { min-height:calc(100vh - 60px); display:flex; flex-direction:column; justify-content:center; gap:28px; padding:0 var(--pad) 48px; }
-  h1 { font-family:"Inter Tight", sans-serif; font-weight:700; letter-spacing:-.03em; line-height:.9; font-size:clamp(56px,13vw,200px); }
-  .sub { max-width:560px; color:var(--grey); font-size:clamp(16px,1.6vw,20px); line-height:1.45; }
-  .hero img { width:100%; height:auto; display:block; margin-top:24px; }
-
-  /* Work */
-  .work { background:var(--light); color:var(--dark); padding:clamp(64px,10vw,140px) var(--pad); }
-  .work + .work { padding-top:0; }
-  .section-head { display:flex; flex-direction:column; gap:14px; margin-bottom:clamp(32px,5vw,64px); }
-  h2 { font-family:"Inter Tight", sans-serif; font-weight:700; letter-spacing:-.03em; line-height:.95; font-size:clamp(40px,7vw,96px); }
-  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap:clamp(24px,3vw,40px) clamp(16px,2vw,28px); }
-  .grid.small { grid-template-columns:repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
-  .card { display:flex; flex-direction:column; gap:14px; }
-  .card .img { aspect-ratio:4/3; overflow:hidden; background:#e4e3df; }
-  .card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
-  .card:hover img { transform:scale(1.04); }
-  .card h3 { font-family:"Inter Tight", sans-serif; font-weight:600; font-size:clamp(20px,2vw,26px); letter-spacing:-.02em; line-height:1.1; margin-top:4px; }
-  .card p { color:var(--grey); font-size:15px; line-height:1.4; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="label">
@@ -64,12 +30,12 @@
         <h2>Selected work.</h2>
       </div>
       <div class="grid">
-        <article class="card">
+        <a class="card" href="work/scorpion/">
           <div class="img"><img src="bilder/projekte/01-scorpion-cover.jpg" alt="Scorp.ion electric moped in side view with cyan front light ring and red rear light band" loading="lazy"></div>
           <span class="label accent">01</span>
           <h3>Scorp.ion</h3>
           <p>Electric moped powered by the tram line</p>
-        </article>
+        </a>
         <article class="card">
           <div class="img"><img src="bilder/projekte/02-steel-vehicle-cover.jpg" alt="Steel gravity racer with blue wheels in front of the Golden Gate Bridge, San Francisco" loading="lazy"></div>
           <span class="label accent">02</span>
