@@ -29,14 +29,26 @@
     main.addEventListener('pause',function(e){ if(e.isTrusted && document.visibilityState==='visible' && main.getBoundingClientRect().top<innerHeight && main.getBoundingClientRect().bottom>0) main.dataset.user='1'; });
   }
   var tiles=[].slice.call(document.querySelectorAll('figure.vid.tile'));
-  tiles.forEach(function(f){
-    var v=f.querySelector('video'); v.removeAttribute('loop');
-    var b=document.createElement('button'); b.className='vplay'; b.setAttribute('aria-label','Play video'); b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
+  if(!tiles.length) return;
+  var vb=document.createElement('div'); vb.className='lb vlb'; vb.setAttribute('role','dialog'); vb.setAttribute('aria-modal','true');
+  vb.innerHTML='<span class="lb-count"></span><button class="lb-close" aria-label="Close">✕</button><button class="lb-prev" aria-label="Previous video">←</button><video controls playsinline></video><p class="lb-cap"></p><button class="lb-next" aria-label="Next video">→</button>';
+  document.body.appendChild(vb);
+  var bv=vb.querySelector('video'), bc=vb.querySelector('.lb-cap'), bn=vb.querySelector('.lb-count'), k=0;
+  function showV(n){ k=(n+tiles.length)%tiles.length; var t=tiles[k], v=t.querySelector('video'), c=t.querySelector('figcaption');
+    bv.src=v.currentSrc||v.src; bv.poster=v.poster; bc.textContent=c?c.textContent:''; bn.textContent=(k+1)+' / '+tiles.length;
+    var p=bv.play(); if(p&&p.catch) p.catch(function(){}); }
+  function openV(n){ if(main) main.pause(); vb.classList.add('open'); document.body.style.overflow='hidden'; showV(n); }
+  function closeV(){ bv.pause(); vb.classList.remove('open'); document.body.style.overflow=''; }
+  tiles.forEach(function(f,n){
+    var v=f.querySelector('video');
+    var b=document.createElement('button'); b.className='vplay'; b.setAttribute('aria-label','Play video large'); b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
     f.appendChild(b);
-    function toggle(){ if(v.paused){ tiles.forEach(function(o){ var ov=o.querySelector('video'); if(ov!==v){ ov.pause(); } }); if(main) main.pause(); v.play(); } else v.pause(); }
-    b.addEventListener('click',toggle); v.addEventListener('click',toggle);
-    v.addEventListener('play',function(){ f.classList.add('playing'); b.setAttribute('aria-label','Pause video'); });
-    v.addEventListener('pause',function(){ f.classList.remove('playing'); b.setAttribute('aria-label','Play video'); });
-    v.addEventListener('ended',function(){ f.classList.remove('playing'); v.currentTime=0; });
+    b.addEventListener('click',function(){ openV(n); }); v.addEventListener('click',function(){ openV(n); });
   });
+  vb.querySelector('.lb-close').onclick=closeV;
+  vb.querySelector('.lb-prev').onclick=function(e){ e.stopPropagation(); showV(k-1); };
+  vb.querySelector('.lb-next').onclick=function(e){ e.stopPropagation(); showV(k+1); };
+  vb.addEventListener('click',function(e){ if(e.target===vb) closeV(); });
+  document.addEventListener('keydown',function(e){ if(!vb.classList.contains('open')) return;
+    if(e.key==='Escape') closeV(); else if(e.key==='ArrowRight') showV(k+1); else if(e.key==='ArrowLeft') showV(k-1); });
 })();
