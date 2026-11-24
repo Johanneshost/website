@@ -121,3 +121,10 @@ nav { padding-top:clamp(24px,3vw,40px); padding-bottom:clamp(20px,2.4vw,32px); }
 .hero { min-height:calc(100vh - 100px); padding-bottom:0; }
 #hero-car { margin-top:auto !important; padding-top:clamp(24px,4vw,56px); margin-bottom:-2px; }
 @media (max-width:720px) { .hero { min-height:auto; } }
+
+/* Feinschliff 2026-11-24: weniger Abstand im Hero, Kontakt-Auto auf dem Trennstrich */
+.hero { min-height:auto; }
+.road { position:relative; margin-top:24px; }
+.road .links { margin-top:0; }
+.contact-car { top:auto !important; bottom:calc(100% - 2px) !important; right:0 !important; }
+@media (max-width:720px) { .contact-car { width:130px !important; } }
