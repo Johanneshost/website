@@ -17,7 +17,7 @@ nav a:hover { color:var(--accent); }
 
 /* Hero */
 .hero { min-height:calc(100vh - 60px); display:flex; flex-direction:column; justify-content:center; gap:28px; padding:0 var(--pad) 48px; }
-h1 { font-family:"Inter Tight", sans-serif; font-weight:700; letter-spacing:-.03em; line-height:.9; font-size:clamp(56px,13vw,200px); }
+h1 { font-family:"Inter Tight", sans-serif; font-weight:700; letter-spacing:-.015em; line-height:.9; font-size:clamp(56px,13vw,200px); }
 .sub { max-width:560px; color:var(--grey); font-size:clamp(16px,1.6vw,20px); line-height:1.45; }
 .hero img { width:100%; height:auto; display:block; margin-top:24px; }
 
