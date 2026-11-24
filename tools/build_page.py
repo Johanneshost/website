@@ -15,6 +15,10 @@ def img(slug, src):
             im=im.convert('RGBA'); bg=Image.new('RGB',im.size,(0,0,0)); bg.paste(im,mask=im.split()[-1]); im=bg
         im=im.convert('RGB'); im.thumbnail((1800,1800)); im.save(out,quality=82,optimize=True,progressive=True)
     return f'../../bilder/{slug}/{name}'
+def next_img(nx):
+    slug=nx[2].strip('./').split('/')[-1]
+    if slug=='scorpion': return '../../bilder/scorpion/cover.jpg'
+    return f'../../bilder/projekte/{nx[0]}-{slug}-cover.jpg?v=2'
 def fig(slug,src,cap,alt):
     return f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"><figcaption>{E(cap)}</figcaption></figure>' if cap else f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"></figure>'
 def build(p):
@@ -36,7 +40,7 @@ def build(p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(p["title"])} · {E(p["sub"])} · Leonard Philp</title>
 <meta name="description" content="{E(p["desc"])}">
-<link rel="stylesheet" href="../../style.css?v=14">
+<link rel="stylesheet" href="../../style.css?v=15">
 </head>
 <body>
   <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#about">About</a></li><li><a href="../../#newsletter">Newsletter</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>
@@ -50,8 +54,7 @@ def build(p):
     <dl class="meta">{meta}</dl>
 {secs}  </main>
   <footer class="next">
-    <span class="label accent">Next project</span>
-    <a href="{nx[2]}"><span class="label">{nx[0]}</span><h2>{E(nx[1])}</h2></a>
+    <a class="next-link" href="{nx[2]}"><div class="next-img"><img src="{next_img(nx)}" alt="" loading="lazy"></div><div class="next-meta"><span class="label accent">Next project</span><span class="label">{nx[0]}</span><h2>{E(nx[1])}</h2><span class="label go">View project →</span></div></a>
   </footer>
 </body>
 </html>

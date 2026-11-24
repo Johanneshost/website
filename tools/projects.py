@@ -20,7 +20,7 @@ build(dict(slug='tableware', title='Tableware for Construction Workers', sub='Us
   desc='Tableware for Construction Workers: a robust, vacuum-formed lunch set in safety yellow by Leonard Philp, designed at San Francisco State University.',
   label='03 / User-centred product design',
   tagline='A robust lunch set designed around the day of a construction worker: durable, easy to carry and as tough-looking as the tools around it.',
-  cover=(B+'03-tableware-cover.jpg','Safety-yellow lunch trays, bowl and cup on a workbench next to a hard hat'),
+  cover=(B+'03-tableware-spray.jpg','Vacuum-formed tableware parts spray-finished in safety yellow'),
   meta=[('Where','San Francisco State University'),('Duration','4 weeks'),('Methods','Research · Sketching · CAD · Vacuum forming'),('Software','Fusion')],
   sections=[
    dict(title='Process', text=['The project started from a persona: Bob, a construction worker whose lunch break happens on the tailgate of a pick-up. Sketches tested stacking, grip and size; the final shapes were modelled in CAD, milled as wooden moulds, vacuum-formed and spray-finished in safety yellow.']),
