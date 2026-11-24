@@ -256,3 +256,10 @@ figure.vid.vid-main { margin-bottom:clamp(16px,2vw,24px); }
 .gallery.vids.small figure.vid video { aspect-ratio:4/3; }
 @media (max-width:720px) { .gallery.vids, .gallery.vids.small { grid-template-columns:1fr 1fr; max-width:none; } }
 .gallery.vids.two-v { grid-template-columns:repeat(2, minmax(0,1fr)); }
+figure.vid.tile { position:relative; }
+figure.vid.tile video { cursor:pointer; }
+.vplay { position:absolute; left:50%; top:calc(50% - 14px); transform:translate(-50%,-50%); width:60px; height:60px; border-radius:50%; border:0; background:rgba(17,17,17,.72); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s, opacity .2s, transform .2s; }
+.vplay svg { width:24px; height:24px; fill:currentColor; margin-left:3px; }
+.vplay:hover { background:var(--accent); transform:translate(-50%,-50%) scale(1.06); }
+figure.vid.tile.playing .vplay { opacity:0; pointer-events:none; }
+.gallery.vids.small .vplay { width:48px; height:48px; }

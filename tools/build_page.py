@@ -17,7 +17,7 @@ def img(slug, src):
     return f'../../bilder/{slug}/{name}'
 def next_img(nx):
     slug=nx[2].strip('./').split('/')[-1]
-    if slug=='scorpion': return '../../bilder/scorpion/cover.jpg'
+    if slug=='scorpion': return '../../bilder/scorpion/historic-tram.jpg'
     return f'../../bilder/projekte/{nx[0]}-{slug}-cover.jpg?v=3'
 def fig(slug,src,cap,alt):
     return f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"><figcaption>{E(cap)}</figcaption></figure>' if cap else f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"></figure>'
@@ -54,7 +54,7 @@ def build(p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(p["title"])} · {E(p["sub"])} · Leonard Philp</title>
 <meta name="description" content="{E(p["desc"])}">
-<link rel="stylesheet" href="../../style.css?v=24">
+<link rel="stylesheet" href="../../style.css?v=25">
 </head>
 <body>
   <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#about">About</a></li><li><a href="../../#newsletter">Newsletter</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>
@@ -70,7 +70,7 @@ def build(p):
   <footer class="next">
     <a class="next-link" href="{nx[2]}"><div class="next-img"><img src="{next_img(nx)}" alt="" loading="lazy"></div><div class="next-meta"><span class="label accent">Next project</span><span class="label">{nx[0]}</span><h2>{E(nx[1])}</h2><span class="label go">View project →</span></div></a>
   </footer>
-  <script src="../../lightbox.js?v=2" defer></script>
+  <script src="../../lightbox.js?v=3" defer></script>
 </body>
 </html>
 '''

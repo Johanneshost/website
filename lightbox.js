@@ -21,10 +21,22 @@
   lb.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) show(i+(dx<0?1:-1)); x0=null; });
 })();
 (function(){
-  var vids=[].slice.call(document.querySelectorAll('figure.vid video'));
-  if(!vids.length || !('IntersectionObserver' in window)) return;
   var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ var v=e.target;
-    if(e.isIntersecting){ if(!reduce){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } } else { v.pause(); } }); },{threshold:.35});
-  vids.forEach(function(v){ io.observe(v); });
+  var main=document.querySelector('figure.vid-main video');
+  if(main && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting){ if(!reduce && !main.dataset.user){ var p=main.play(); if(p&&p.catch) p.catch(function(){}); } } else main.pause(); }); },{threshold:.35}).observe(main);
+    main.addEventListener('pause',function(e){ if(e.isTrusted && document.visibilityState==='visible' && main.getBoundingClientRect().top<innerHeight && main.getBoundingClientRect().bottom>0) main.dataset.user='1'; });
+  }
+  var tiles=[].slice.call(document.querySelectorAll('figure.vid.tile'));
+  tiles.forEach(function(f){
+    var v=f.querySelector('video'); v.removeAttribute('loop');
+    var b=document.createElement('button'); b.className='vplay'; b.setAttribute('aria-label','Play video'); b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
+    f.appendChild(b);
+    function toggle(){ if(v.paused){ tiles.forEach(function(o){ var ov=o.querySelector('video'); if(ov!==v){ ov.pause(); } }); if(main) main.pause(); v.play(); } else v.pause(); }
+    b.addEventListener('click',toggle); v.addEventListener('click',toggle);
+    v.addEventListener('play',function(){ f.classList.add('playing'); b.setAttribute('aria-label','Pause video'); });
+    v.addEventListener('pause',function(){ f.classList.remove('playing'); b.setAttribute('aria-label','Play video'); });
+    v.addEventListener('ended',function(){ f.classList.remove('playing'); v.currentTime=0; });
+  });
 })();
