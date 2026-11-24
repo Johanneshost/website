@@ -176,3 +176,18 @@ nav { padding-top:clamp(24px,3vw,40px); padding-bottom:clamp(20px,2.4vw,32px); }
 }
 @media (max-width:720px) { .cv-cols, .skills { grid-template-columns:1fr; } .contact-car { width:156px !important; } }
 .newsletter { background:#000; }
+
+/* Feinschliff 3 */
+.cv-cols { padding-bottom:clamp(40px,5vw,64px); }
+.cv-cols .cv li { grid-template-columns:56px minmax(0,1fr); grid-template-rows:auto auto; }
+.cv-cols .cv .when { grid-column:2; grid-row:1; }
+.cv-cols .cv .logo { grid-column:1; grid-row:2; align-self:start; height:36px; margin-top:-8px; }
+.cv-cols .cv li > div { grid-column:2; grid-row:2; }
+.skills-group { display:block; padding-top:28px; }
+.skills-group h3 { margin-bottom:20px; }
+.skills { grid-template-columns:repeat(3, minmax(0,1fr)); gap:clamp(24px,3vw,48px); }
+.skills .sw-wrap { grid-column:1 / -1; }
+.sw { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:12px; margin-top:14px; }
+.sw li { gap:12px; padding:10px 12px; background:#fff; border-radius:10px; font-size:14px; color:#222; }
+.sw img { width:30px; height:30px; flex:none; }
+@media (max-width:720px) { .skills { grid-template-columns:1fr; } .sw { grid-template-columns:1fr 1fr; } }
