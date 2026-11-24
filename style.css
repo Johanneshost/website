@@ -246,3 +246,4 @@ nav { padding-top:clamp(24px,3vw,40px); padding-bottom:clamp(20px,2.4vw,32px); }
 .card:hover .img-pop img { transform:none; }
 .img-pop { padding-bottom:6%; }
 .grid:not(.small) .card > .img { margin-bottom:6%; }
+.sw-icons.ic-dark svg { stroke:#111; }
