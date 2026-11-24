@@ -18,7 +18,7 @@ def img(slug, src):
 def next_img(nx):
     slug=nx[2].strip('./').split('/')[-1]
     if slug=='scorpion': return '../../bilder/scorpion/cover.jpg'
-    return f'../../bilder/projekte/{nx[0]}-{slug}-cover.jpg?v=2'
+    return f'../../bilder/projekte/{nx[0]}-{slug}-cover.jpg?v=3'
 def fig(slug,src,cap,alt):
     return f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"><figcaption>{E(cap)}</figcaption></figure>' if cap else f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"></figure>'
 def build(p):
