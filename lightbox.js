@@ -20,3 +20,11 @@
   var x0=null; lb.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
   lb.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) show(i+(dx<0?1:-1)); x0=null; });
 })();
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('figure.vid video'));
+  if(!vids.length || !('IntersectionObserver' in window)) return;
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ var v=e.target;
+    if(e.isIntersecting){ if(!reduce){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } } else { v.pause(); } }); },{threshold:.35});
+  vids.forEach(function(v){ io.observe(v); });
+})();

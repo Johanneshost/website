@@ -247,3 +247,12 @@ nav { padding-top:clamp(24px,3vw,40px); padding-bottom:clamp(20px,2.4vw,32px); }
 .img-pop { padding-bottom:6%; }
 .grid:not(.small) .card > .img { margin-bottom:6%; }
 .sw-icons.ic-dark svg { stroke:#111; }
+/* Scorpion films */
+figure.vid { margin:0; }
+figure.vid video { width:100%; height:auto; display:block; aspect-ratio:16/9; object-fit:cover; background:#111; }
+figure.vid.vid-main { margin-bottom:clamp(16px,2vw,24px); }
+.gallery.vids { grid-template-columns:repeat(3, minmax(0,1fr)); margin-bottom:clamp(16px,2vw,24px); }
+.gallery.vids.small { grid-template-columns:repeat(4, minmax(0,1fr)); }
+.gallery.vids.small figure.vid video { aspect-ratio:4/3; }
+@media (max-width:720px) { .gallery.vids, .gallery.vids.small { grid-template-columns:1fr 1fr; max-width:none; } }
+.gallery.vids.two-v { grid-template-columns:repeat(2, minmax(0,1fr)); }
