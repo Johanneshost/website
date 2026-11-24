@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leonard Philp · Industrial Design Portfolio</title>
 <meta name="description" content="Portfolio of Leonard Philp, industrial design student at HTW Berlin: transportation design, product design and automotive tape rendering.">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <nav class="label">
@@ -17,7 +17,7 @@
     <p class="label accent">Industrial Design Portfolio</p>
     <h1>Leonard Philp</h1>
     <p class="sub">Industrial design student at HTW Berlin. Transportation, product and the space between business and form.</p>
-    <img src="bilder/hero.jpg" alt="Full-scale automotive tape rendering of the sports car Nilu 27 by Leonard Philp" width="2200" height="633">
+    <img id="hero-car" src="bilder/hero.jpg" alt="Full-scale automotive tape rendering of the sports car Nilu 27 by Leonard Philp" width="2200" height="633">
   </header>
 
   <main>
@@ -132,6 +132,7 @@
     </section>
 
     <section class="contact" id="contact">
+      <img class="contact-car" src="bilder/car-contact.webp" alt="" aria-hidden="true" width="1000" height="235">
       <p class="label accent">04 / Contact</p>
       <h2>Let's build<br>something.</h2>
       <ul class="links">
@@ -146,5 +147,29 @@
     <span>© 2026 Leonard Philp / Industrial Design</span>
     <span>Full CV and further projects on request</span>
   </footer>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Hero: Auto fährt beim Runterscrollen nach links raus (nur Desktop/Tablet, wie bei Framer)
+  var car = document.getElementById('hero-car'), hero = document.querySelector('.hero');
+  var desktop = window.matchMedia('(min-width: 721px)');
+  var ticking = false;
+  function update() {
+    ticking = false;
+    if (!desktop.matches || reduce) { car.style.transform = ''; return; }
+    var p = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
+    car.style.transform = 'translateX(' + (-p * 2000) + 'px)';
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+  // Kontakt: kleines Auto fährt von rechts rein, beim Hochscrollen wieder raus
+  var contact = document.getElementById('contact');
+  if (reduce || !('IntersectionObserver' in window)) { contact.classList.add('in'); return; }
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { contact.classList.toggle('in', e.isIntersecting); });
+  }, { threshold: 0.35 }).observe(contact);
+})();
+</script>
 </body>
 </html>
