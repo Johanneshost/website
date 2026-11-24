@@ -10,7 +10,10 @@ def img(slug, src):
     d=f'{ROOT}/bilder/{slug}'; os.makedirs(d,exist_ok=True)
     out=f'{d}/{name}'
     if not os.path.exists(out):
-        im=Image.open(SRC+src).convert('RGB'); im.thumbnail((1800,1800)); im.save(out,quality=82,optimize=True,progressive=True)
+        im=Image.open(SRC+src)
+        if im.mode in ('RGBA','LA','P'):
+            im=im.convert('RGBA'); bg=Image.new('RGB',im.size,(0,0,0)); bg.paste(im,mask=im.split()[-1]); im=bg
+        im=im.convert('RGB'); im.thumbnail((1800,1800)); im.save(out,quality=82,optimize=True,progressive=True)
     return f'../../bilder/{slug}/{name}'
 def fig(slug,src,cap,alt):
     return f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"><figcaption>{E(cap)}</figcaption></figure>' if cap else f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"></figure>'
