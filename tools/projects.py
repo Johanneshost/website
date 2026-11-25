@@ -104,3 +104,4 @@ build(dict(slug='detail-sander', title='Product Analysis: Detail Sander', sub='R
    dict(title='Brief', text=['Together with Konstantin Weilinger, I took a detail sander apart and analysed every part for repairability, materials and manufacturing. The findings were laser-engraved into the frame of two presentation boards with a vacuum-formed inlay.']),
    dict(title='Boards', images=[(S+'cover-board-detail.jpg','Findings engraved into the frame','Findings laser-engraved into the board frame'),(S+'two-boards.jpg','Two boards with the disassembled sander','Two presentation boards with the disassembled sander'),(S+'vacuum-formed-inlay.jpg','Vacuum-formed inlay','Vacuum-formed inlay holding the sander parts')]),
   ], next=('01','SCORP.ION','../scorpion/')))
+import seo  # icons, canonical, Open Graph, sitemap
