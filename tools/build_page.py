@@ -19,6 +19,7 @@ def next_img(nx):
     slug=nx[2].strip('./').split('/')[-1]
     if slug=='scorpion': return '../../bilder/scorpion/historic-tram.jpg'
     return f'../../bilder/projekte/{nx[0]}-{slug}-cover.jpg?v=3'
+MV='\n  <script type="module" src="../../js/model-viewer-3.5.0.min.js"></script>'
 def fig(slug,src,cap,alt):
     return f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"><figcaption>{E(cap)}</figcaption></figure>' if cap else f'<figure><img src="{img(slug,src)}" alt="{E(alt)}" loading="lazy"></figure>'
 def justified(slug,images):
@@ -50,6 +51,9 @@ def build(p):
         tcls='text stack' if idx==0 else 'text t2' if c==2 else ('text stack' if c==9 else 'text')
         txt=''.join(f'<p>{E(t)}</p>' for t in sec.get('text',[]))
         gal=''
+        if sec.get('model'):
+            src,alt=sec['model']
+            gal=f'<figure class="model3d"><model-viewer src="../../{src}" alt="{E(alt)}" camera-controls camera-orbit="35deg 75deg auto" auto-rotate auto-rotate-delay="0" rotation-per-second="18deg" interaction-prompt="none" shadow-intensity="1" exposure="1" environment-image="neutral" touch-action="pan-y" loading="lazy"></model-viewer><figcaption>Drag to rotate · scroll or pinch to zoom · right-drag to move</figcaption></figure>'
         if sec.get('images'):
             cls='gallery sketches' if sec.get('layout')=='sketches' else ('gallery two' if len(sec['images'])==4 else ('gallery one' if len(sec['images'])==1 else 'gallery'))
             if sec.get('layout')=='sketches':
@@ -66,7 +70,7 @@ def build(p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(p["title"])} · {E(p["sub"])} · Leonard Philp</title>
 <meta name="description" content="{E(p["desc"])}">
-<link rel="stylesheet" href="../../style.css?v=32">
+<link rel="stylesheet" href="../../style.css?v=33">
 </head>
 <body>
   <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#about">About</a></li><li><a href="../../#newsletter">Newsletter</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>
@@ -82,7 +86,7 @@ def build(p):
   <footer class="next">
     <a class="next-link" href="{nx[2]}"><div class="next-img"><img src="{next_img(nx)}" alt="" loading="lazy"></div><div class="next-meta"><span class="label accent">Next project</span><span class="label">{nx[0]}</span><h2>{E(nx[1])}</h2><span class="label go">View project →</span></div></a>
   </footer>
-  <script src="../../lightbox.js?v=5" defer></script>
+  <script src="../../lightbox.js?v=5" defer></script>{MV if any(x.get('model') for x in p['sections']) else ''}
 </body>
 </html>
 '''

@@ -289,3 +289,9 @@ body { overflow-x:clip; }
 /* above free-flowing sketch rows: text under the heading, starting at the image edge */
 .text.stack { grid-template-columns:1fr; }
 .text.stack > div { grid-column:1; max-width:880px; }
+/* 3D model viewer */
+.model3d{margin:0}
+.model3d model-viewer{width:100%;height:min(72vh,720px);background:radial-gradient(ellipse at 50% 60%,#2a2a2a 0%,#111 70%);border-radius:4px;--poster-color:transparent;cursor:grab}
+.model3d model-viewer:active{cursor:grabbing}
+.model3d figcaption{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.6;margin-top:10px;text-align:center}
+@media (max-width:720px){.model3d model-viewer{height:62vh}}

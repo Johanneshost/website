@@ -61,6 +61,7 @@ build(dict(slug='nilu-27', title='Nilu 27 & Sketch Gallery', sub='Full-scale tap
    dict(title='Side view', images=[(U+'06-nilu-27/06-nilu27-side-view-cutout.png','','Cut-out side view of the Nilu 27 tape rendering on black')]),
    dict(title='Sketch gallery', text=['Car sketches from recent years, drawn digitally and by hand: studies of proportion, stance, surfaces and light signatures. Media: digital, marker, pencil (Photoshop, Procreate).']),
    dict(title='Marker & pencil sketches', layout='sketches', images=skimg(sk[:9])),
+   dict(title='In 3D', text=['A Mercedes-AMG GT modelled in Blender. Turn it, zoom in and look at it from every side.'], model=('bilder/nilu-27/3d/mercedes-amg-gt.glb','Interactive 3D model of a Mercedes-AMG GT by Leonard Philp')),
    dict(title='Digital sketches', layout='sketches', images=skimg(sk[9:])),
   ], next=('07','Yellow Superpress','../yellow-superpress/')))
 build(dict(slug='yellow-superpress', title='Yellow Superpress', sub='Lemon press for bars',
