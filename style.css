@@ -276,3 +276,9 @@ figure.vid.tile.playing .vplay { opacity:0; pointer-events:none; }
 .meta-uni span { white-space:nowrap; }
 .meta-uni.sfsu img { height:46px; }
 .contact { overflow-x:clip; } .hero { overflow-x:clip; }
+/* Text sits on the same 3-column grid as the galleries: heading = column 1, text = columns 2–3 */
+.text { grid-template-columns:repeat(3, minmax(0,1fr)); column-gap:clamp(16px,2vw,24px); }
+.text > h2, .text > .t-head { grid-column:1; }
+.text > div { grid-column:2 / -1; }
+.text p { max-width:none; }
+@media (max-width:720px) { .text { grid-template-columns:1fr; } .text > div { grid-column:1; } }
