@@ -23,7 +23,8 @@ def block(path, title, desc, url, img, pre, extra=''):
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{img}">
-{extra}<!--/seo-->'''
+{extra}<script data-goatcounter="https://leonardphilp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<!--/seo-->'''
 pages=['index.html']+sorted(glob.glob('work/*/index.html',root_dir=ROOT))
 urls=[]
 for rel in pages:
