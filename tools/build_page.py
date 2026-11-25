@@ -47,7 +47,7 @@ def build(p):
     cols=[ncols(x) for x in p['sections']]
     for idx,sec in enumerate(p['sections']):
         c=cols[idx] or next((x for x in cols[idx+1:] if x), 3)
-        tcls='text t2' if c==2 else ('text stack' if c==9 else 'text')
+        tcls='text stack' if idx==0 else 'text t2' if c==2 else ('text stack' if c==9 else 'text')
         txt=''.join(f'<p>{E(t)}</p>' for t in sec.get('text',[]))
         gal=''
         if sec.get('images'):
