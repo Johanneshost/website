@@ -286,3 +286,6 @@ figure.vid.tile.playing .vplay { opacity:0; pointer-events:none; }
 .text.t2 > div { grid-column:2; }
 @media (max-width:720px) { .text.t2 { grid-template-columns:1fr; } .text.t2 > div { grid-column:1; } }
 body { overflow-x:clip; }
+/* above free-flowing sketch rows: text under the heading, starting at the image edge */
+.text.stack { grid-template-columns:1fr; }
+.text.stack > div { grid-column:1; max-width:880px; }
