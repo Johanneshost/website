@@ -282,3 +282,7 @@ figure.vid.tile.playing .vplay { opacity:0; pointer-events:none; }
 .text > div { grid-column:2 / -1; }
 .text p { max-width:none; }
 @media (max-width:720px) { .text { grid-template-columns:1fr; } .text > div { grid-column:1; } }
+.text.t2 { grid-template-columns:repeat(2, minmax(0,1fr)); }
+.text.t2 > div { grid-column:2; }
+@media (max-width:720px) { .text.t2 { grid-template-columns:1fr; } .text.t2 > div { grid-column:1; } }
+body { overflow-x:clip; }

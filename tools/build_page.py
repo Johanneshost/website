@@ -38,7 +38,16 @@ def build(p):
     secs=''
     where=' '.join(v for k,v in p['meta'] if k=='Where')
     uni='<div class="meta-uni"><img src="../../bilder/about/logo-htw-black.png?v=1" alt="" loading="lazy"><span>Hochschule für Technik<br>und Wirtschaft Berlin</span></div>' if 'HTW' in where else ('<div class="meta-uni sfsu"><img src="../../bilder/about/logo-sfsu-full.jpg?v=1" alt="San Francisco State University" loading="lazy"></div>' if 'San Francisco' in where else '')
-    for sec in p['sections']:
+    def ncols(sec):
+        im=sec.get('images') or []
+        if sec.get('layout')=='sketches': return 3
+        if len(im) in (2,4): return 2
+        if len(im)>=3: return 3
+        return 0
+    cols=[ncols(x) for x in p['sections']]
+    for idx,sec in enumerate(p['sections']):
+        c=cols[idx] or next((x for x in cols[idx+1:] if x), 3)
+        tcls='text t2' if c==2 else 'text'
         txt=''.join(f'<p>{E(t)}</p>' for t in sec.get('text',[]))
         gal=''
         if sec.get('images'):
@@ -48,7 +57,7 @@ def build(p):
             else:
                 gal=f'<div class="{cls}">'+''.join(fig(s,*i) for i in sec['images'])+'</div>'
         head=f'<h2>{E(sec["title"])}</h2>'
-        secs+=f'<section class="block"><div class="text">{head}<div>{txt}</div></div>{gal}</section>\n'
+        secs+=f'<section class="block"><div class="{tcls}">{head}<div>{txt}</div></div>{gal}</section>\n'
     nx=p['next']
     page=f'''<!doctype html>
 <html lang="en">
@@ -57,7 +66,7 @@ def build(p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(p["title"])} · {E(p["sub"])} · Leonard Philp</title>
 <meta name="description" content="{E(p["desc"])}">
-<link rel="stylesheet" href="../../style.css?v=30">
+<link rel="stylesheet" href="../../style.css?v=31">
 </head>
 <body>
   <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#about">About</a></li><li><a href="../../#newsletter">Newsletter</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>
