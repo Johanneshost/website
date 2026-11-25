@@ -1,5 +1,5 @@
 """Adds icons, canonical URL and social-sharing (Open Graph) tags to every page. Run after projects.py."""
-import os, re, glob, html, json
+import os, re, glob, html
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE='https://leonardphilp.com'
 def block(path, title, desc, url, img, pre, extra=''):
@@ -33,12 +33,7 @@ for rel in pages:
     desc=html.unescape(re.search(r'<meta name="description" content="(.*?)">',s).group(1))
     if rel=='index.html':
         url=SITE+'/'; pre=''; img=SITE+'/og-image.jpg'
-        ld={"@context":"https://schema.org","@type":"Person","name":"Leonard Philp","jobTitle":"Industrial Design Student","url":url,
-            "affiliation":{"@type":"CollegeOrUniversity","name":"HTW Berlin – Hochschule für Technik und Wirtschaft Berlin"},
-            "address":{"@type":"PostalAddress","addressLocality":"Berlin","addressCountry":"DE"},
-            "knowsAbout":["Industrial design","Transportation design","Automotive design","Product design","Tape rendering","Car sketching"],
-            "sameAs":re.findall(r'href="(https://(?:www\.)?(?:instagram|linkedin|behance)\.[^"]+)"',s)}
-        extra='<script type="application/ld+json">'+json.dumps(ld,ensure_ascii=False)+'</script>\n'
+        extra=''
     else:
         slug=rel.split('/')[1]; url=f'{SITE}/work/{slug}/'; pre='../../'
         m=re.search(r'<img class="full" src="\.\./\.\./([^"?]+)',s)

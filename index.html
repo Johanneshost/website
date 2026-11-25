@@ -26,9 +26,8 @@
 <meta name="twitter:title" content="Leonard Philp · Industrial Design Portfolio">
 <meta name="twitter:description" content="Portfolio of Leonard Philp, industrial design student at HTW Berlin: transportation design, product design and automotive tape rendering.">
 <meta name="twitter:image" content="https://leonardphilp.com/og-image.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Leonard Philp", "jobTitle": "Industrial Design Student", "url": "https://leonardphilp.com/", "affiliation": {"@type": "CollegeOrUniversity", "name": "HTW Berlin – Hochschule für Technik und Wirtschaft Berlin"}, "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}, "knowsAbout": ["Industrial design", "Transportation design", "Automotive design", "Product design", "Tape rendering", "Car sketching"], "sameAs": ["https://instagram.com/advanced_transportdesign", "https://www.linkedin.com/in/leonard-philp", "https://www.behance.net/leonardphilp"]}</script>
 <!--/seo-->
-<link rel="stylesheet" href="style.css?v=28">
+<link rel="stylesheet" href="style.css?v=29">
 </head>
 <body>
   <nav class="label">
@@ -187,15 +186,15 @@
 <script>
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Hero: Auto fährt beim Runterscrollen nach links raus (nur Desktop/Tablet, wie bei Framer)
+  // Hero: Auto fährt beim Runterscrollen nach links raus (Desktop und Handy)
   var car = document.getElementById('hero-car'), hero = document.querySelector('.hero');
-  var desktop = window.matchMedia('(min-width: 721px)');
   var ticking = false;
   function update() {
     ticking = false;
-    if (!desktop.matches || reduce) { car.style.transform = ''; return; }
+    if (reduce) { car.style.transform = ''; return; }
     var p = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
-    car.style.transform = 'translateX(' + (-p * 2000) + 'px)';
+    var dist = window.innerWidth > 720 ? 2000 : window.innerWidth * 1.3;
+    car.style.transform = 'translate3d(' + (-p * dist) + 'px,0,0)';
   }
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   window.addEventListener('resize', update);
@@ -203,9 +202,13 @@
   // Kontakt: kleines Auto fährt von rechts rein, beim Hochscrollen wieder raus
   var contact = document.getElementById('contact');
   if (reduce || !('IntersectionObserver' in window)) { contact.classList.add('in'); return; }
+  // rein ab 20 % sichtbar, raus erst wenn ganz weg (verhindert Flackern am Handy)
   new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { contact.classList.toggle('in', e.isIntersecting); });
-  }, { threshold: 0.35 }).observe(contact);
+    entries.forEach(function (e) {
+      if (e.intersectionRatio >= 0.2) contact.classList.add('in');
+      else if (!e.isIntersecting) contact.classList.remove('in');
+    });
+  }, { threshold: [0, 0.2] }).observe(contact);
 })();
 </script>
 </body>

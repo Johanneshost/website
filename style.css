@@ -275,3 +275,4 @@ figure.vid.tile.playing .vplay { opacity:0; pointer-events:none; }
 @media (max-width:720px) { .meta-uni { justify-self:start; } }
 .meta-uni span { white-space:nowrap; }
 .meta-uni.sfsu img { height:46px; }
+.contact { overflow-x:clip; } .hero { overflow-x:clip; }
