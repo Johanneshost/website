@@ -70,7 +70,7 @@ def build(p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(p["title"])} · {E(p["sub"])} · Leonard Philp</title>
 <meta name="description" content="{E(p["desc"])}">
-<link rel="stylesheet" href="../../style.css?v=33">
+<link rel="stylesheet" href="../../style.css?v=34">
 </head>
 <body>
   <nav class="label"><a href="../../">Leonard Philp</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#about">About</a></li><li><a href="../../#newsletter">Newsletter</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>

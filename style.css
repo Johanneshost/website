@@ -243,7 +243,8 @@ nav { padding-top:clamp(24px,3vw,40px); padding-bottom:clamp(20px,2.4vw,32px); }
 .img-pop img { width:100%; height:auto; object-fit:initial; }
 .img-pop .img img { height:auto; }
 .img-pop .pop { position:absolute; left:0; top:0; z-index:2; pointer-events:none; transition:transform .6s ease; }
-.card:hover .img-pop img { transform:none; }
+.img-pop .img img, .img-pop .pop { transform-origin:50% 0; }
+.card:hover .img-pop .img img, .card:hover .img-pop .pop { transform:scale(1.04); }
 .img-pop { padding-bottom:6%; }
 .grid:not(.small) .card > .img { margin-bottom:6%; }
 .sw-icons.ic-dark svg { stroke:#111; }
